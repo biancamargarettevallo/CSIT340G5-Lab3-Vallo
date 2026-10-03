@@ -6,38 +6,43 @@ const Part = (props) => (
 
 const Content = (props) => (
   <div>
-    <Part part={props.part1} />
-    <Part part={props.part2} />
-    <Part part={props.part3} />
+    <Part part={props.parts[0]} />
+    <Part part={props.parts[1]} />
+    <Part part={props.parts[2]} />
   </div>
 )
 
 const Total = (props) => (
   <p>
-    Number of exercises {props.part1.exercises + props.part2.exercises + props.part3.exercises}
+    Number of exercises {props.parts[0].exercises + props.parts[1].exercises + props.parts[2].exercises}
   </p>
+)
+
+const Footer = (props) => (
+  <footer>
+    {props.name} - {props.courseCode} - {props.section}
+  </footer>
 )
 
 const App = () => {
   const course = 'CSIT340 - Industry Elective 1'
-  const part1 = {
-    name: 'CSIT341 - Industry Elective 2',
-    exercises: 3
-  }
-  const part2 = {
-    name: 'CSIT342 - Industry Elective 3',
-    exercises: 3
-  }
-  const part3 = {
-    name: 'CSIT440 - Industry Trends',
-    exercises: 3
-  }
+
+  const parts = [
+    { name: 'CSIT341 - Industry Elective 2', exercises: 3 },
+    { name: 'CSIT342 - Industry Elective 3', exercises: 3 },
+    { name: 'CSIT440 - Industry Trends', exercises: 3 } 
+  ]
+
+  const studentName = 'Bianca Margarette G. Vallo'
+  const courseCode = 'CSIT340'
+  const section = 'G5'
 
   return (
     <div>
       <Header course={course} />
-      <Content part1={part1} part2={part2} part3={part3} />
-      <Total part1={part1} part2={part2} part3={part3} />
+      <Content parts={parts} />
+      <Total parts={parts} />
+      <Footer name={studentName} courseCode={courseCode} section={section} />
     </div>
   )
 }
